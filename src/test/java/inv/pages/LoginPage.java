@@ -1,4 +1,4 @@
-package inv;
+package inv.pages;
 
 import org.fest.assertions.Assertions;
 import org.openqa.selenium.WebDriver;
