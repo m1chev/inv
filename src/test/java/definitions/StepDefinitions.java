@@ -1,4 +1,4 @@
-package inv;
+package definitions;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -7,10 +7,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import inv.pages.ClientPage;
-import inv.pages.DashboardPage;
-import inv.pages.ItemPage;
-import inv.pages.LoginPage;
 import org.apache.commons.io.FileUtils;
 import org.fest.assertions.Assertions;
 import org.openqa.selenium.OutputType;
@@ -21,13 +17,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pages.*;
 import util.Constants;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-public class InvStepDefinitions {
-    private static final Logger LOGGER = LoggerFactory.getLogger(InvStepDefinitions.class);
+public class StepDefinitions {
+    private static final Logger LOGGER = LoggerFactory.getLogger(StepDefinitions.class);
     //Drivers location
     private static final String chromeDriverLocation = "C:\\webdrivers\\chromedriver.exe";
     private static final String firefoxDriverLocation = "C:\\webdrivers\\geckodriver.exe";
@@ -40,6 +37,7 @@ public class InvStepDefinitions {
     private DashboardPage dashboardPage;
     private ItemPage itemPage;
     private ClientPage clientPage;
+    private CashBoxPage cashBoxPage;
     WebDriver driver;
 
 
@@ -72,7 +70,7 @@ public class InvStepDefinitions {
 
     @Before
     public void before() {
-        startBrowser("firefox");
+        startBrowser("chrome");
     }
 
     @After
@@ -103,6 +101,12 @@ public class InvStepDefinitions {
     public void gotoItemsPage() {
         itemPage = new ItemPage(driver);
         itemPage.gotoPage();
+    }
+
+    @When("^I navigate to CashBox Page$")
+    public void gotoCashBoxPage() {
+        cashBoxPage = new CashBoxPage(driver);
+        cashBoxPage.gotoPage();
     }
 
     @When("^I navigate to Clients Page$")
@@ -146,6 +150,16 @@ public class InvStepDefinitions {
         clientPage.createClient(name, vat, address, town);
     }
 
+    @When("^I create new expense with value:\"(.*)\" and title:\"(.*)\" and firmName:\"(.*)\" and category:\"(.*)\" and notes:\"(.*)\"$")
+    public void createNewExpense(String value, String title, String firmName, String category, String notes) {
+        cashBoxPage.createExpense(value, title, firmName, category, notes);
+    }
+
+    @When("^I create new income with value:\"(.*)\" and title:\"(.*)\" and firmName:\"(.*)\" and category:\"(.*)\" and notes:\"(.*)\"$")
+    public void createNewIncome(String value, String title, String firmName, String category, String notes) {
+        cashBoxPage.createIncome(value, title, firmName, category, notes);
+    }
+
     @And("^I press Login button$")
     public void iPressLoginButton() {
         loginPage.pressLoginButton();
@@ -154,6 +168,11 @@ public class InvStepDefinitions {
     @When("^I delete all items")
     public void deleteAllItems() {
         itemPage.deleteAllItems();
+    }
+
+    @When("^I delete all expenses")
+    public void deleteAllExpenses() {
+        cashBoxPage.deleteAllItems();
     }
 
     @When("^I delete all clients")
@@ -186,6 +205,11 @@ public class InvStepDefinitions {
     @Then("^Add New Item button should contain text:\"([^\"]*)\"$")
     public void addNewItemVisible(String text) {
         Assertions.assertThat(itemPage.getNewItemLinkText()).as("Add Item Link").contains(text);
+    }
+
+    @Then("^Add New Expense button should contain text:\"(.*)\"$")
+    public void addNewExpenseVisible(String text) {
+        Assertions.assertThat(cashBoxPage.getNewExpenseButtonText()).as("Add Expense Link").contains(text);
     }
 
     @Then("^Add New Client button should contain text:\"([^\"]*)\"$")

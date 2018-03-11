@@ -2,10 +2,10 @@ package util;
 
 public enum Pages {
     INV_URL("https://st2016.inv.bg"),
-    BATTLESHIPS_URL("http://www.techhuddle.com/tests/battleships/v4test/index.php"),
     INV_LOGIN_PAGE("/login"),
     INV_CLIENT_PAGE("/clients/manage"),
-    INV_ITEM_PAGE("/objects/manage");
+    INV_ITEM_PAGE("/objects/manage"),
+    INV_CASH_BOX_PAGE("/cashbox");
 
 
     private final String path;
