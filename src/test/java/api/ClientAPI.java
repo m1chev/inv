@@ -11,10 +11,11 @@ public class ClientAPI {
     public static final Logger LOGGER = LoggerFactory.getLogger(ClientAPI.class);
     private static final String CLIENT_ENDPOINT = "/client";
     private static final String CLIENTS_ENDPOINT = "/clients";
+    private static final String POST_FIX = "RESTapi";
 
     static {
         RestAssured.baseURI = Pages.INV_URL.getPath();
-        RestAssured.basePath = "/RESTapi";
+        RestAssured.basePath = POST_FIX;
         RestAssured.authentication = RestAssured.preemptive().basic("karamfilovs@gmail.com", "123456");
     }
 
@@ -23,5 +24,5 @@ public class ClientAPI {
         LOGGER.info("Response:" + response.getBody().asString());
     }
 
-  
+
 }
