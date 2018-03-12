@@ -17,6 +17,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import rest.api.ClientAPI;
+import rest.api.InvoiceAPI;
+import rest.api.ItemAPI;
 import ui.*;
 import util.Constants;
 
@@ -35,6 +38,7 @@ public class StepDefinitions {
     //Page objects
     private LoginPage loginPage;
     private DashboardPage dashboardPage;
+    private InvoicePage invoicePage;
     private ItemPage itemPage;
     private ClientPage clientPage;
     private CashBoxPage cashBoxPage;
@@ -115,6 +119,12 @@ public class StepDefinitions {
         clientPage.gotoPage();
     }
 
+    @When("^I navigate to Invoices Page$")
+    public void gotoInvoicesPage() {
+        invoicePage = new InvoicePage(driver);
+        invoicePage.gotoPage();
+    }
+
     @Given("^user is logged in the system$")
     public void userLoggedIn() {
         loginPage = new LoginPage(driver);
@@ -124,6 +134,23 @@ public class StepDefinitions {
         loginPage.pressLoginButton();
     }
 
+    @When("^I clean all items on API level$")
+    public void deleteAllItemsAPILevel() {
+        ItemAPI itemAPI = new ItemAPI();
+        itemAPI.deleteAllExistingItems();
+    }
+
+    @When("^I clean all invoices on API level$")
+    public void deleteAllInvoicesAPILevel() {
+        InvoiceAPI invoiceAPI = new InvoiceAPI();
+        invoiceAPI.deleteAllExistingInvoices();
+    }
+
+    @When("^I clean all clients on API level$")
+    public void deleteAllClientsAPILevel() {
+        ClientAPI clientAPI = new ClientAPI();
+        clientAPI.deleteAllExistingClients();
+    }
 
     @When("^I enter username \"([^\"]*)\"$")
     public void enterUsername(String username) {
@@ -215,6 +242,11 @@ public class StepDefinitions {
     @Then("^Add New Client button should contain text:\"([^\"]*)\"$")
     public void addNewClientVisible(String text) {
         Assertions.assertThat(clientPage.getNewClientLinkText()).as("Add Item Link").contains(text);
+    }
+
+    @Then("^Add New Invoice button should contain text:\"([^\"]*)\"$")
+    public void addNewInvoiceButtonVisible(String text) {
+        Assertions.assertThat(invoicePage.getNewInvoiceLinkText()).as("Add Invoice Link").contains(text);
     }
 
 }

@@ -3,9 +3,12 @@ package rest.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jayway.restassured.response.Response;
-import rest.RESTClient;
 import rest.pojos.Client;
+import rest.utils.RESTClient;
+import rest.utils.ResponseUtils;
 import util.enums.Endpoints;
+
+import java.util.List;
 
 public class ClientAPI {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -25,6 +28,12 @@ public class ClientAPI {
 
     public Response createClient(Client client) {
         return RESTClient.post(Endpoints.CLIENT_ENDPOINT.getPath(), GSON.toJson(client));
+    }
+
+    public void deleteAllExistingClients() {
+        Response response = getAllClients();
+        List<String> idsForDeletion = ResponseUtils.getList(response, "$.*.id");
+        idsForDeletion.forEach(id -> deleteClient(id));
     }
 
 

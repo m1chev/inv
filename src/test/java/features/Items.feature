@@ -4,9 +4,9 @@ Feature: Items tests http://inv.bg/objects/manage
     Given user is logged in the system
     When I navigate to Items Page
     Then Add New Item button should contain text:"Нов Артикул"
+    When I clean all items on API level
 
 
-  @dev
   Scenario Outline: Open Items Page
     Given user is logged in the system
     Then user panel should contain text:"karamfilovs@gmail.com"

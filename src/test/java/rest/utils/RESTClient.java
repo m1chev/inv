@@ -1,4 +1,4 @@
-package rest;
+package rest.utils;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
@@ -24,7 +24,7 @@ public class RESTClient {
     }
 
     public static Response delete(String endpoint, String clientId) {
-        Response response = RestAssured.given().contentType(ContentType.JSON).log().all().get(endpoint + "/" + clientId);
+        Response response = RestAssured.given().contentType(ContentType.JSON).log().all().delete(endpoint + "/" + clientId);
         LOGGER.info("Delete Response:" + response.getBody().asString());
         return response;
     }

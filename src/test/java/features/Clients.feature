@@ -1,10 +1,12 @@
 Feature: Clients tests http://inv.bg/clients/manage
 
+
   Scenario: Open items page
     Given user is logged in the system
     Then user panel should contain text:"karamfilovs@gmail.com"
     When I navigate to Clients Page
     Then Add New Client button should contain text:"Нов клиент"
+    When I clean all clients on API level
 
 
   Scenario Outline: Add new client with valid data
