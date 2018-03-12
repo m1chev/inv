@@ -4,8 +4,8 @@ Feature: CashBox tests http://inv.bg/cashbox
     Given user is logged in the system
     Then user panel should contain text:"karamfilovs@gmail.com"
     When I navigate to Clients Page
-    When I delete all clients
-    When I navigate to CashBox Page
+    And I delete all clients
+    And I navigate to CashBox Page
     Then Add New Expense button should contain text:"Нов разход"
     When I create new expense with value:"<value>" and title:"<title>" and firmName:"<firmName>" and category:"<category>" and notes:"<notes>"
     Then item message with text should be displayed:"<addSuccess>"
