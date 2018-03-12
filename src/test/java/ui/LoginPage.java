@@ -1,4 +1,4 @@
-package ui.pages;
+package ui;
 
 import org.fest.assertions.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import util.Constants;
-import util.PageAction;
 import util.enums.Pages;
 
 public class LoginPage {

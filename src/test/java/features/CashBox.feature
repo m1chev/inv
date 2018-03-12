@@ -1,6 +1,5 @@
 Feature: CashBox tests http://inv.bg/cashbox
 
-  @dev
   Scenario Outline: Create new expense
     Given user is logged in the system
     Then user panel should contain text:"karamfilovs@gmail.com"

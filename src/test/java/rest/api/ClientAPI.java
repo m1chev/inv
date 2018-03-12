@@ -3,9 +3,9 @@ package rest.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jayway.restassured.response.Response;
+import rest.RESTClient;
 import rest.pojos.Client;
 import util.enums.Endpoints;
-import util.RESTClient;
 
 public class ClientAPI {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
