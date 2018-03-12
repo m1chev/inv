@@ -1,4 +1,4 @@
-package pages;
+package ui.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import util.PageAction;
-import util.Pages;
+import util.enums.Pages;
 
 public class CashBoxPage {
     private PageAction action;

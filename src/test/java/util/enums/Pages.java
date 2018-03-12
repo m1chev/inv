@@ -1,4 +1,4 @@
-package util;
+package util.enums;
 
 public enum Pages {
     INV_URL("https://st2016.inv.bg"),
