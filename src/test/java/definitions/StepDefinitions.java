@@ -65,6 +65,7 @@ public class StepDefinitions {
     }
 
     private void configureBrowser(String browser) {
+        LOGGER.info("==================== TEST START ====================");
         LOGGER.info("Starting browser:" + browser);
         driver.manage().deleteAllCookies(); //delete cookies
         driver.manage().window().maximize(); //To maximize browser
@@ -152,37 +153,37 @@ public class StepDefinitions {
         clientAPI.deleteAllExistingClients();
     }
 
-    @When("^I enter username \"([^\"]*)\"$")
+    @When("^I enter username \"(.*)\"$")
     public void enterUsername(String username) {
         loginPage.enterUsername(username);
     }
 
-    @And("^I enter password \"([^\"]*)\"$")
+    @And("^I enter password \"(.*)\"$")
     public void enterPassword(String password) {
         loginPage.enterPassword(password);
     }
 
-    @And("^I enter item name \"([^\"]*)\"$")
+    @And("^I enter item name \"(.*)\"$")
     public void enterItemName(String name) {
         itemPage.enterName(name);
     }
 
-    @When("^I create new item with name:\"(.*)\" and nameENG:\"(.*)\" and price:\"(.*)\" and priceQuantity:\"(.*)\"$")
+    @When("^I create new item with name \"(.*)\" and nameENG \"(.*)\" and price \"(.*)\" and priceQuantity \"(.*)\"$")
     public void createNewItem(String name, String nameENG, String price, String priceQuantity) {
         itemPage.createItem(name, nameENG, price, priceQuantity);
     }
 
-    @When("^I create new client with name:\"(.*)\" and vat:\"(.*)\" and address:\"(.*)\" and town:\"(.*)\"$")
+    @When("^I create new client with name \"(.*)\" and vat \"(.*)\" and address \"(.*)\" and town \"(.*)\"$")
     public void createNewClient(String name, String vat, String address, String town) {
         clientPage.createClient(name, vat, address, town);
     }
 
-    @When("^I create new expense with value:\"(.*)\" and title:\"(.*)\" and firmName:\"(.*)\" and category:\"(.*)\" and notes:\"(.*)\"$")
+    @When("^I create new expense with value \"(.*)\" and title \"(.*)\" and firmName \"(.*)\" and category \"(.*)\" and notes \"(.*)\"$")
     public void createNewExpense(String value, String title, String firmName, String category, String notes) {
         cashBoxPage.createExpense(value, title, firmName, category, notes);
     }
 
-    @When("^I create new income with value:\"(.*)\" and title:\"(.*)\" and firmName:\"(.*)\" and category:\"(.*)\" and notes:\"(.*)\"$")
+    @When("^I create new income with value \"(.*)\" and title \"(.*)\" and firmName \"(.*)\" and category \"(.*)\" and notes \"(.*)\"$")
     public void createNewIncome(String value, String title, String firmName, String category, String notes) {
         cashBoxPage.createIncome(value, title, firmName, category, notes);
     }
@@ -207,44 +208,44 @@ public class StepDefinitions {
         clientPage.deleteAllClients();
     }
 
-    @Then("^login error message with text should be displayed:\"(.*)\"$")
+    @Then("^login error message with text should be displayed \"(.*)\"$")
     public void loginErrorMessage(String errorMessage) {
         loginPage.verifyMessage(errorMessage);
     }
 
-    @Then("^item message with text should be displayed:\"(.*)\"$")
+    @Then("^item message with text should be displayed \"(.*)\"$")
     public void itemSuccessMessage(String successMessage) {
         Assertions.assertThat(itemPage.getSuccessAddMessage()).as("Item Added").contains(successMessage);
     }
 
-    @Then("^client message with text should be displayed:\"([^\"]*)\"$")
+    @Then("^client message with text should be displayed \"(.*)\"$")
     public void clientSuccessMessage(String successMessage) {
         Assertions.assertThat(clientPage.getSuccessAddMessage()).as("Item Added").contains(successMessage);
     }
 
 
-    @Then("^user panel should contain text:\"([^\"]*)\"$")
+    @Then("^user panel should contain text \"(.*)\"$")
     public void userPanelShouldContain(String text) {
         dashboardPage = new DashboardPage(driver);
         Assertions.assertThat(dashboardPage.getUserPanelText()).as("User Panel").contains(text);
     }
 
-    @Then("^Add New Item button should contain text:\"([^\"]*)\"$")
+    @Then("^Add New Item button should contain text \"(.*)\"$")
     public void addNewItemVisible(String text) {
         Assertions.assertThat(itemPage.getNewItemLinkText()).as("Add Item Link").contains(text);
     }
 
-    @Then("^Add New Expense button should contain text:\"(.*)\"$")
+    @Then("^Add New Expense button should contain text \"(.*)\"$")
     public void addNewExpenseVisible(String text) {
         Assertions.assertThat(cashBoxPage.getNewExpenseButtonText()).as("Add Expense Link").contains(text);
     }
 
-    @Then("^Add New Client button should contain text:\"([^\"]*)\"$")
+    @Then("^Add New Client button should contain text \"(.*)\"$")
     public void addNewClientVisible(String text) {
         Assertions.assertThat(clientPage.getNewClientLinkText()).as("Add Item Link").contains(text);
     }
 
-    @Then("^Add New Invoice button should contain text:\"([^\"]*)\"$")
+    @Then("^Add New Invoice button should contain text \"(.*)\"$")
     public void addNewInvoiceButtonVisible(String text) {
         Assertions.assertThat(invoicePage.getNewInvoiceLinkText()).as("Add Invoice Link").contains(text);
     }

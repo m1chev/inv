@@ -1,21 +1,21 @@
 Feature: Items tests http://inv.bg/objects/manage
 
-  Scenario: Open Items Page
+  Scenario: Navigate to items page
     Given user is logged in the system
     When I navigate to Items Page
-    Then Add New Item button should contain text:"Нов Артикул"
+    Then Add New Item button should contain text "Нов Артикул"
     When I clean all items on API level
 
 
-  Scenario Outline: Open Items Page
+  Scenario Outline: Create new item with valid information
     Given user is logged in the system
-    Then user panel should contain text:"karamfilovs@gmail.com"
+    Then user panel should contain text "karamfilovs@gmail.com"
     When I navigate to Items Page
-    Then Add New Item button should contain text:"Нов Артикул"
-    When I create new item with name:"<name>" and nameENG:"<nameENG>" and price:"<price>" and priceQuantity:"<priceQuantity>"
-    Then item message with text should be displayed:"<addSuccess>"
+    Then Add New Item button should contain text "Нов Артикул"
+    When I create new item with name "<name>" and nameENG "<nameENG>" and price "<price>" and priceQuantity "<priceQuantity>"
+    Then item message with text should be displayed "<addSuccess>"
     When I delete all items
-    Then item message with text should be displayed:"<deleteSuccess>"
+    Then item message with text should be displayed "<deleteSuccess>"
     Examples:
       | name             | nameENG        | price | priceQuantity | addSuccess                   | deleteSuccess                            |
       | Кафе             | Coffee         | 10    | 1             | Артикулът е добавен успешно. | Избраните артикули бяха изтрити успешно. |
