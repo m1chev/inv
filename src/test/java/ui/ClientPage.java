@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import util.Constants;
 import util.enums.Pages;
 
 import java.util.Date;
@@ -108,7 +109,7 @@ public class ClientPage {
 
 
     public void gotoPage() {
-        action.gotoPage(Pages.INV_URL.getPath(), Pages.INV_CLIENT_PAGE.getPath());
+        action.gotoPage(Constants.INV_URL, Pages.INV_CLIENT_PAGE.getPath());
     }
 
     public String getNewClientLinkText() {

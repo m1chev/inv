@@ -5,14 +5,14 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.enums.Pages;
+import util.Constants;
 
 public class RESTClient {
     public static final Logger LOGGER = LoggerFactory.getLogger(RESTClient.class);
     private static final String POST_FIX = "RESTapi";
 
     static {
-        RestAssured.baseURI = Pages.INV_URL.getPath();
+        RestAssured.baseURI = Constants.INV_URL;
         RestAssured.basePath = POST_FIX;
         RestAssured.authentication = RestAssured.preemptive().basic("karamfilovs@gmail.com", "123456");
     }

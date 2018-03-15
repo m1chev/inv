@@ -34,7 +34,7 @@ public class LoginPage {
     }
 
     public void gotoPage() {
-        action.gotoPage(Pages.INV_URL.getPath(), Pages.INV_LOGIN_PAGE.getPath());
+        action.gotoPage(Constants.INV_URL, Pages.INV_LOGIN_PAGE.getPath());
     }
 
 

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import util.Constants;
 import util.enums.Pages;
 
 public class ItemPage {
@@ -104,7 +105,7 @@ public class ItemPage {
 
 
     public void gotoPage() {
-        action.gotoPage(Pages.INV_URL.getPath(), Pages.INV_ITEM_PAGE.getPath());
+        action.gotoPage(Constants.INV_URL, Pages.INV_ITEM_PAGE.getPath());
     }
 
     public String getNewItemLinkText(){

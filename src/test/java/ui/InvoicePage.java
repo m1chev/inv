@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import util.Constants;
 import util.enums.Pages;
 
 public class InvoicePage {
@@ -21,7 +22,7 @@ public class InvoicePage {
     }
 
     public void gotoPage() {
-        action.gotoPage(Pages.INV_URL.getPath(), Pages.INV_INVOICE_PAGE.getPath());
+        action.gotoPage(Constants.INV_URL, Pages.INV_INVOICE_PAGE.getPath());
     }
 
     public String getNewInvoiceLinkText() {

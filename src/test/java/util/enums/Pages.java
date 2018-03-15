@@ -1,7 +1,6 @@
 package util.enums;
 
 public enum Pages {
-    INV_URL("https://st2016.inv.bg"),
     INV_LOGIN_PAGE("/login"),
     INV_CLIENT_PAGE("/clients/manage"),
     INV_ITEM_PAGE("/objects/manage"),
