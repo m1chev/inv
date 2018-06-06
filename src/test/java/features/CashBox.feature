@@ -1,11 +1,13 @@
 Feature: CashBox tests http://inv.bg/cashbox
 
-  Scenario Outline: Create new expense
+  Background:
     Given user is logged in the system
     Then user panel should contain text "karamfilovs@gmail.com"
-    When I navigate to Clients Page
+
+  Scenario Outline: Create new expense
+    When I navigate to Clients page
     And I delete all clients
-    And I navigate to CashBox Page
+    And I navigate to CashBox page
     Then Add New Expense button should contain text "Нов разход"
     When I create new expense with value "<value>" and title "<title>" and firmName "<firmName>" and category "<category>" and notes "<notes>"
     Then item message with text should be displayed "<addSuccess>"
@@ -19,9 +21,7 @@ Feature: CashBox tests http://inv.bg/cashbox
 
 
   Scenario Outline: Create new income
-    Given user is logged in the system
-    Then user panel should contain text "karamfilovs@gmail.com"
-    When I navigate to CashBox Page
+    When I navigate to CashBox page
     Then Add New Expense button should contain text "Нов разход"
     When I create new income with value "<value>" and title "<title>" and firmName "<firmName>" and category "<category>" and notes "<notes>"
     Then item message with text should be displayed "<addSuccess>"

@@ -109,7 +109,7 @@ public class ClientPage {
 
 
     public void gotoPage() {
-        action.gotoPage(Constants.INV_URL, Pages.INV_CLIENT_PAGE.getPath());
+        action.gotoPage(Pages.INV_CLIENT_PAGE.getPath());
     }
 
     public String getNewClientLinkText() {

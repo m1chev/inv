@@ -105,7 +105,7 @@ public class ItemPage {
 
 
     public void gotoPage() {
-        action.gotoPage(Constants.INV_URL, Pages.INV_ITEM_PAGE.getPath());
+        action.gotoPage(Pages.INV_ITEM_PAGE.getPath());
     }
 
     public String getNewItemLinkText(){

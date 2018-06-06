@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import util.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +36,9 @@ public class PageAction {
         element.click();
     }
 
-    public void gotoPage(String siteURL, String page) {
-        LOGGER.info("Navigating to " + siteURL + page + " page");
-        driver.navigate().to(siteURL + page);
+    public void gotoPage(String page) {
+        LOGGER.info("Navigating to " + Constants.INV_URL + page + " page");
+        driver.navigate().to(Constants.INV_URL + page);
     }
 
     public String getText(WebElement element) {

@@ -22,7 +22,7 @@ public class InvoicePage {
     }
 
     public void gotoPage() {
-        action.gotoPage(Constants.INV_URL, Pages.INV_INVOICE_PAGE.getPath());
+        action.gotoPage(Pages.INV_INVOICE_PAGE.getPath());
     }
 
     public String getNewInvoiceLinkText() {

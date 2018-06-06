@@ -138,6 +138,6 @@ public class CashBoxPage {
     }
 
     public void gotoPage() {
-        action.gotoPage(Constants.INV_URL, Pages.INV_CASH_BOX_PAGE.getPath());
+        action.gotoPage(Pages.INV_CASH_BOX_PAGE.getPath());
     }
 }

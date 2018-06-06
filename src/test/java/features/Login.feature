@@ -1,8 +1,10 @@
-@test
+@test1
 Feature: Login tests http://inv.bg/login
 
+  Background:
+    Given user is at the Login page
+
   Scenario Outline: Bad Login
-    Given user is on Login Page
     When I enter username "<username>"
     And I enter password "<password>"
     And I press Login button
@@ -15,7 +17,6 @@ Feature: Login tests http://inv.bg/login
 
 
   Scenario: Successful login
-    Given user is on Login Page
     When I enter username "karamfilovs@gmail.com"
     And I enter password "123456"
     And I press Login button

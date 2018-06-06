@@ -1,16 +1,17 @@
 Feature: Items tests http://inv.bg/objects/manage
 
-  Scenario: Navigate to items page
+  Background:
     Given user is logged in the system
-    When I navigate to Items Page
+    Then user panel should contain text "karamfilovs@gmail.com"
+
+  Scenario: Navigate to items page
+    When I navigate to Items page
     Then Add New Item button should contain text "Нов Артикул"
     When I clean all items on API level
 
 
   Scenario Outline: Create new item with valid information
-    Given user is logged in the system
-    Then user panel should contain text "karamfilovs@gmail.com"
-    When I navigate to Items Page
+    When I navigate to Items page
     Then Add New Item button should contain text "Нов Артикул"
     When I create new item with name "<name>" and nameENG "<nameENG>" and price "<price>" and priceQuantity "<priceQuantity>"
     Then item message with text should be displayed "<addSuccess>"

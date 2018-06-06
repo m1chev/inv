@@ -96,31 +96,31 @@ public class StepDefinitions {
     }
 
 
-    @Given("^user is on Login Page$")
-    public void user_is_on_Home_Page() {
+    @Given("^user is at the Login page$")
+    public void user_is_at_Home_Page() {
         loginPage = new LoginPage(driver);
         loginPage.gotoPage();
     }
 
-    @When("^I navigate to Items Page$")
+    @When("^I navigate to Items page$")
     public void gotoItemsPage() {
         itemPage = new ItemPage(driver);
         itemPage.gotoPage();
     }
 
-    @When("^I navigate to CashBox Page$")
+    @When("^I navigate to CashBox page$")
     public void gotoCashBoxPage() {
         cashBoxPage = new CashBoxPage(driver);
         cashBoxPage.gotoPage();
     }
 
-    @When("^I navigate to Clients Page$")
+    @When("^I navigate to Clients page$")
     public void gotoClientsPage() {
         clientPage = new ClientPage(driver);
         clientPage.gotoPage();
     }
 
-    @When("^I navigate to Invoices Page$")
+    @When("^I navigate to Invoices page$")
     public void gotoInvoicesPage() {
         invoicePage = new InvoicePage(driver);
         invoicePage.gotoPage();
