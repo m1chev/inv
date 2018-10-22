@@ -24,14 +24,14 @@ import ui.*;
 import util.Constants;
 
 import java.io.File;
+import java.time.LocalTime;
 import java.util.concurrent.TimeUnit;
 
 public class StepDefinitions {
     private static final Logger LOGGER = LoggerFactory.getLogger(StepDefinitions.class);
     //Drivers location
-    private static final String chromeDriverLocation = "C:\\webdrivers\\chromedriver.exe";
-    private static final String firefoxDriverLocation = "C:\\webdrivers\\geckodriver.exe";
-    private static final String ieDriverLocation = "C:\\webdrivers\\IEDriverServer.exe";
+    private final String WINDOWS_CHROME_DRIVER_PATH = "src\\test\\java\\webdrivers\\chromedriver-v2.43.exe";
+    private final String WINDOWS_FIREFOX_DRIVER_PATH = "src\\test\\java\\webdrivers\\geckodriver-v0.23.exe";
     private static final String chromeProperty = "webdriver.chrome.driver";
     private static final String firefoxProperty = "webdriver.gecko.driver";
     private static final String ieProperty = "webdriver.ie.driver";
@@ -47,20 +47,16 @@ public class StepDefinitions {
 
     private void startBrowser(String browser) {
         if (browser.equalsIgnoreCase("firefox")) {
-            System.setProperty(firefoxProperty, firefoxDriverLocation);
+            System.setProperty(firefoxProperty, WINDOWS_FIREFOX_DRIVER_PATH);
             driver = new FirefoxDriver();
             configureBrowser(browser);
         }
         if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty(chromeProperty, chromeDriverLocation);
+            System.setProperty(chromeProperty, WINDOWS_CHROME_DRIVER_PATH);
             driver = new ChromeDriver();
             configureBrowser(browser);
         }
-        if (browser.equalsIgnoreCase("ie")) {
-            System.setProperty(ieProperty, ieDriverLocation);
-            driver = new InternetExplorerDriver();
-            configureBrowser(browser);
-        }
+
 
     }
 
@@ -81,18 +77,25 @@ public class StepDefinitions {
     @After
     public void after(Scenario scenario) {
         if (scenario.isFailed()) {
-            try {
-                TakesScreenshot screenshot = (TakesScreenshot) driver;
-                File src = screenshot.getScreenshotAs(OutputType.FILE); //capture screenshot
-                String fileName = scenario.getName() + ".png";
-                FileUtils.copyFile(src, new File("E:\\screenshots\\" + fileName)); //copy file to location
-                LOGGER.info("Successfully captured a screenshot");
-                LOGGER.info("Stored image:" + fileName + " at:" + "E:\\screenshots\\");
-            } catch (Exception e) {
-                LOGGER.info("Exception while taking screenshot " + e.getMessage());
+            if (driver instanceof TakesScreenshot) {
+                TakesScreenshot screenshotTakingDriver = (TakesScreenshot) driver;
+                try {
+                    File localScreenshots = new File(new File("target"), "screenshots");
+                    if (!localScreenshots.exists() || !localScreenshots.isDirectory()) {
+                        localScreenshots.mkdirs();
+                    }
+                    String fileName = scenario.getName().replace(" ", "_") + "_" + LocalTime.now().getMinute() + ".png";
+                    File screenshot = new File(localScreenshots, fileName);
+                    FileUtils.copyFile(screenshotTakingDriver.getScreenshotAs(OutputType.FILE), screenshot);
+                    LOGGER.info("Screenshot saved with name:" + fileName);
+                } catch (Exception e1) {
+                    LOGGER.error("Unable to take screenshot", e1);
+                }
+            } else {
+                LOGGER.info("Driver '{}' can't take screenshots so skipping it.", driver.getClass());
             }
         }
-        driver.quit();
+        driver.quit(); //close browser instance
     }
 
 
