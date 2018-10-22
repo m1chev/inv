@@ -1,3 +1,4 @@
+@cashbox
 Feature: CashBox tests http://inv.bg/cashbox
 
   Background:

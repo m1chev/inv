@@ -1,3 +1,4 @@
+@invoices
 Feature: Invoices tests http://inv.bg/clients/manage
 
   Background:

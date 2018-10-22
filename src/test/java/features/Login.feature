@@ -1,4 +1,4 @@
-@test1
+@test @login
 Feature: Login tests http://inv.bg/login
 
   Background:
