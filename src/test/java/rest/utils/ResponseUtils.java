@@ -19,7 +19,7 @@ public class ResponseUtils {
 
     public static String getString(String responseBody, String path) {
         LOGGER.info("Extracting value from response body with path:" + path);
-        String value = JsonPath.read(responseBody, path);
+        String value = JsonPath.read(responseBody, path).toString();
         LOGGER.info("Value found:" + value);
         return value;
     }

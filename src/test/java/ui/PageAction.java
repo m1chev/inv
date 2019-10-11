@@ -123,7 +123,6 @@ public class PageAction {
             alert.accept(); //Handle unexpected alert on page load.
             LOGGER.info("Accepting alert with text:" + alert.getText());
         } catch (Exception e) {
-            LOGGER.info("Unexpected alert not present");
         }
     }
 
@@ -134,7 +133,6 @@ public class PageAction {
             alertText = alert.getText();
             LOGGER.info("Getting text from alert:" + alertText);
         } catch (Exception e) {
-            LOGGER.info("Unexpected alert not present");
         }
         return alertText;
     }
@@ -145,7 +143,6 @@ public class PageAction {
             LOGGER.info("Dismissing alert with text:" + alert.getText());
             alert.dismiss(); //Handle unexpected alert on page load.
         } catch (Exception e) {
-            LOGGER.info("Unexpected alert not present");
         }
     }
 }

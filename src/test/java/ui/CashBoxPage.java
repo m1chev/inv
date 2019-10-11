@@ -41,7 +41,7 @@ public class CashBoxPage {
     @FindBy(how = How.XPATH, using = "//a[@class='newbtn']")
     private WebElement addNewExpenseLink;
 
-    @FindBy(how = How.ID, using = "delbtn")
+    @FindBy(how = How.ID, using = "cshbx_delbtn")
     private WebElement deleteItemButton;
 
     @FindBy(how = How.ID, using = "handle_all")

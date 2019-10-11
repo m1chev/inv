@@ -4,7 +4,7 @@ Feature: Login tests http://inv.bg/login
   Background:
     Given user is at the Login page
 
-  Scenario Outline: Bad Login
+  Scenario Outline: Cant login with invalid credentials
     When I enter username "<username>"
     And I enter password "<password>"
     And I press Login button
@@ -16,10 +16,11 @@ Feature: Login tests http://inv.bg/login
       | karamfilovs@gmail     | 123456   | Грешно потребителско име или парола. Моля, опитайте отново. |
 
 
-  Scenario: Successful login
+  Scenario: Can login with valid credentials
     When I enter username "karamfilovs@gmail.com"
     And I enter password "123456"
     And I press Login button
     Then user panel should contain text "karamfilovs@gmail.com"
+
 
 
