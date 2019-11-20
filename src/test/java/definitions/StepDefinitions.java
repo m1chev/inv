@@ -1,5 +1,6 @@
 package definitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -221,6 +222,7 @@ public class StepDefinitions {
         Assertions.assertThat(itemPage.getSuccessAddMessage()).as("Item Added").contains(successMessage);
     }
 
+
     @Then("^client message with text should be displayed \"(.*)\"$")
     public void clientSuccessMessage(String successMessage) {
         Assertions.assertThat(clientPage.getSuccessAddMessage()).as("Item Added").contains(successMessage);
@@ -253,4 +255,11 @@ public class StepDefinitions {
         Assertions.assertThat(invoicePage.getNewInvoiceLinkText()).as("Add Invoice Link").contains(text);
     }
 
+    @When("^I enter username \"([^\"]*)\" and password \"([^\"]*)\" and click Login button$")
+    public void iEnterUsernameAndPasswordAndClickLoginButton(String username, String password)  {
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
+        loginPage.pressLoginButton();
+
+    }
 }

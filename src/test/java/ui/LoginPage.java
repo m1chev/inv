@@ -15,9 +15,6 @@ public class LoginPage {
     @FindBy(how = How.ID, using = "loginusername")
     private WebElement usernameField;
 
-    @FindBy(how = How.ID, using = "loginWithFinger")
-    private WebElement biometricLoginButton;
-
     @FindBy(how = How.ID, using = "loginpassword")
     private WebElement passwordField;
 

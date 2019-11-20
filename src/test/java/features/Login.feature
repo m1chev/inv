@@ -5,9 +5,7 @@ Feature: Login tests http://inv.bg/login
     Given user is at the Login page
 
   Scenario Outline: Cant login with invalid credentials
-    When I enter username "<username>"
-    And I enter password "<password>"
-    And I press Login button
+    When I enter username "<username>" and password "<password>" and click Login button
     Then login error message with text should be displayed "<error_message>"
     Examples:
       | username              | password | error_message                                               |
@@ -22,5 +20,9 @@ Feature: Login tests http://inv.bg/login
     And I press Login button
     Then user panel should contain text "karamfilovs@gmail.com"
 
+
+  Scenario: Can login successfully
+    When I enter username "karamfilovs@gmail.com" and password "123456" and click Login button
+    Then user panel should contain text "karamfilovs@gmail.com"
 
 
