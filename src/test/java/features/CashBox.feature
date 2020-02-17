@@ -20,7 +20,7 @@ Feature: CashBox tests http://inv.bg/cashbox
 
   Scenario Outline: Create new income
     When I navigate to CashBox page
-    Then Add New Expense button should contain text "Нов разход"
+    Then Add New Income button should contain text "Нов приход"
     When I create new income with value "<value>" and title "<title>" and firmName "<firmName>" and category "<category>" and notes "<notes>"
     Then item message with text should be displayed "<addSuccess>"
     When I delete all expenses

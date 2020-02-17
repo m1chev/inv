@@ -35,10 +35,10 @@ public class CashBoxPage {
     @FindBy(how = How.ID, using = "client_firmname")
     private WebElement firmNameField;
 
-    @FindBy(how = How.XPATH, using = "//a[@class='newbtn newbtn_nc']")
+    @FindBy(how = How.XPATH, using = "//a[@class='btn-cashbox-add btn-green selenium-add-chashbox-in']")
     private WebElement newAddIncomeLink;
 
-    @FindBy(how = How.XPATH, using = "//a[@class='newbtn']")
+    @FindBy(how = How.XPATH, using = "//a[@class='btn-cashbox-add btn-red selenium-add-chashbox-out']")
     private WebElement addNewExpenseLink;
 
     @FindBy(how = How.ID, using = "cshbx_delbtn")
@@ -64,6 +64,7 @@ public class CashBoxPage {
     public String getNewExpenseButtonText() {
         return action.getText(addNewExpenseLink);
     }
+
 
     public String getNewIncomeButtonText() {
         return action.getText(newAddIncomeLink);

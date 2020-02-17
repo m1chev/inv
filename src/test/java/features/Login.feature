@@ -24,5 +24,3 @@ Feature: Login tests http://inv.bg/login
   Scenario: Can login successfully
     When I enter username "karamfilovs@gmail.com" and password "123456" and click Login button
     Then user panel should contain text "karamfilovs@gmail.com"
-
-

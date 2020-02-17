@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class StepDefinitions {
     private static final Logger LOGGER = LoggerFactory.getLogger(StepDefinitions.class);
     //Drivers location
-    private final String WINDOWS_CHROME_DRIVER_PATH = "src\\test\\java\\webdrivers\\chromedriver77.exe";
+    private final String WINDOWS_CHROME_DRIVER_PATH = "src\\test\\java\\webdrivers\\chromedriver80.exe";
     private final String WINDOWS_FIREFOX_DRIVER_PATH = "src\\test\\java\\webdrivers\\geckodriver-v0.23.exe";
     private static final String chromeProperty = "webdriver.chrome.driver";
     private static final String firefoxProperty = "webdriver.gecko.driver";
@@ -245,6 +245,11 @@ public class StepDefinitions {
         Assertions.assertThat(cashBoxPage.getNewExpenseButtonText()).as("Add Expense Link").contains(text);
     }
 
+    @Then("^Add New Income button should contain text \"(.*)\"$")
+    public void addNewIncomeVisible(String text) {
+        Assertions.assertThat(cashBoxPage.getNewIncomeButtonText()).as("Add Income Link").contains(text);
+    }
+
     @Then("^Add New Client button should contain text \"(.*)\"$")
     public void addNewClientVisible(String text) {
         Assertions.assertThat(clientPage.getNewClientLinkText()).as("Add Item Link").contains(text);
@@ -261,5 +266,14 @@ public class StepDefinitions {
         loginPage.enterPassword(password);
         loginPage.pressLoginButton();
 
+    }
+
+    @And("^I wait (\\d+) second for the students to see what is going on$")
+    public void iWaitSecondForTheStudentsToSeeWhatIsGoingOn(int arg0) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
