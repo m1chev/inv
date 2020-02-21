@@ -32,7 +32,7 @@ public class StepDefinitions {
     private static final Logger LOGGER = LoggerFactory.getLogger(StepDefinitions.class);
     //Drivers location
     private final String WINDOWS_CHROME_DRIVER_PATH = "src\\test\\java\\webdrivers\\chromedriver80.exe";
-    private final String WINDOWS_FIREFOX_DRIVER_PATH = "src\\test\\java\\webdrivers\\geckodriver-v0.23.exe";
+    private final String WINDOWS_FIREFOX_DRIVER_PATH = "src\\test\\java\\webdrivers\\geckodriver-v2.43.exe";
     private static final String chromeProperty = "webdriver.chrome.driver";
     private static final String firefoxProperty = "webdriver.gecko.driver";
     private static final String ieProperty = "webdriver.ie.driver";
