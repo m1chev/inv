@@ -8,6 +8,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.fest.assertions.Assertions;
 import org.openqa.selenium.OutputType;
@@ -30,12 +31,7 @@ import java.util.concurrent.TimeUnit;
 
 public class StepDefinitions {
     private static final Logger LOGGER = LoggerFactory.getLogger(StepDefinitions.class);
-    //Drivers location
-    private final String WINDOWS_CHROME_DRIVER_PATH = "src\\test\\java\\webdrivers\\chromedriver80.exe";
-    private final String WINDOWS_FIREFOX_DRIVER_PATH = "src\\test\\java\\webdrivers\\geckodriver0.26.exe";
-    private static final String chromeProperty = "webdriver.chrome.driver";
-    private static final String firefoxProperty = "webdriver.gecko.driver";
-    private static final String ieProperty = "webdriver.ie.driver";
+
     //Page objects
     private LoginPage loginPage;
     private DashboardPage dashboardPage;
@@ -48,18 +44,17 @@ public class StepDefinitions {
 
     private void startBrowser(String browser) {
         if (browser.equalsIgnoreCase("firefox")) {
-            System.setProperty(firefoxProperty, WINDOWS_FIREFOX_DRIVER_PATH);
             driver = new FirefoxDriver();
             configureBrowser(browser);
         }
         if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty(chromeProperty, WINDOWS_CHROME_DRIVER_PATH);
             driver = new ChromeDriver();
             configureBrowser(browser);
         }
 
 
     }
+
 
     private void configureBrowser(String browser) {
         LOGGER.info("==================== TEST START ====================");
@@ -72,7 +67,9 @@ public class StepDefinitions {
 
     @Before
     public void before() {
-        startBrowser("firefox");
+        WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
+        startBrowser("chrome");
     }
 
     @After
