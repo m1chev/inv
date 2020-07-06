@@ -20,7 +20,7 @@ public class CashBoxPage {
     @FindBy(how = How.NAME, using = "submit")
     private WebElement submitButton;
 
-    @FindBy(how = How.NAME, using = "category_1")
+    @FindBy(how = How.NAME, using = "category")
     private WebElement categoryDropdown;
 
     @FindBy(how = How.ID, using = "cb_cats_1")
