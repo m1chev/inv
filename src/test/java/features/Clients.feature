@@ -1,4 +1,4 @@
-@clients
+@test
 Feature: Clients tests http://inv.bg/clients/manage
 
   Background:

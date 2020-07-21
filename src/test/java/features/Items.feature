@@ -1,4 +1,4 @@
-@items
+@test
 Feature: Items tests http://inv.bg/objects/manage
 
   Background:

@@ -1,4 +1,4 @@
-@cashbox
+@test
 Feature: CashBox tests http://inv.bg/cashbox
 
   Background:
@@ -28,4 +28,4 @@ Feature: CashBox tests http://inv.bg/cashbox
       | value  | title       | firmName     | notes    | category | addSuccess                       |
       | 20     | Coffee      | Coffee Shop  | blank    | testing  | Информацията е добавена успешно. |
       | 240.23 | Rent        | RentProperty | My notes | testing  | Информацията е добавена успешно. |
-      | 121212 | Eletrcicity | Ginka        | Geez     | testing  | Информацията е добавена успешно. |
+      | 121212 | Electricity | Ginka EOOD       | Geez     | testing  | Информацията е добавена успешно. |
