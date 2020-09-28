@@ -24,6 +24,9 @@ public class LoginPage {
     @FindBy(how = How.XPATH, using = "//div[@class='selenium-error-block']")
     private WebElement badLoginPopup;
 
+    @FindBy(how = How.XPATH, using = "//a[@class='selenium-forgotten-page']")
+    private WebElement resetPasswordLink;
+
 
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -66,5 +69,9 @@ public class LoginPage {
 
     public String getBadLoginMessage() {
         return action.getText(badLoginPopup);
+    }
+
+    public void pressResetPasswordLink() {
+        resetPasswordLink.click();
     }
 }

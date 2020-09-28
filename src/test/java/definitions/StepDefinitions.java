@@ -39,6 +39,7 @@ public class StepDefinitions {
     private ItemPage itemPage;
     private ClientPage clientPage;
     private CashBoxPage cashBoxPage;
+    private ForgottenPasswordPage forgottenPasswordPage;
     WebDriver driver;
 
 
@@ -272,5 +273,55 @@ public class StepDefinitions {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @When("^I enter email \"([^\"]*)\"$")
+    public void iEnterEmail(String email) {
+      loginPage.enterUsername(email);
+    }
+
+    @Given("^I am at the Login page$")
+    public void iAmAtTheLoginPage() {
+        loginPage = new LoginPage(driver);
+        loginPage.gotoPage();
+    }
+
+    @When("^I click reset password link$")
+    public void iClickResetPasswordLink() {
+        loginPage.pressResetPasswordLink();
+    }
+
+    @Then("^Forgotten password page should be loaded$")
+    public void forgottenPasswordPageShouldBeLoaded() {
+        forgottenPasswordPage = new ForgottenPasswordPage(driver);
+        Assertions.assertThat(forgottenPasswordPage.getPageTitle())
+                .as("Page Title")
+                .isEqualToIgnoringCase("Възстановяване на парола");
+    }
+
+    @Then("^Forgotten password page title is \"([^\"]*)\"$")
+    public void forgottenPasswordPageTitleIs(String title)  {
+        forgottenPasswordPage = new ForgottenPasswordPage(driver);
+        Assertions.assertThat(forgottenPasswordPage.getPageTitle())
+                .as("Page Title")
+                .isEqualToIgnoringCase(title);
+    }
+
+    @And("^I click send button$")
+    public void iClickSendButton() {
+        forgottenPasswordPage.clickSendButton();
+    }
+
+    @When("^I enter email \"([^\"]*)\" for forgotten password restore$")
+    public void iEnterEmailForForgottenPasswordRestore(String email){
+      forgottenPasswordPage.enterEmail(email);
+    }
+
+    @Then("^error message with text \"([^\"]*)\" is displayed$")
+    public void errorMessageWithTextIsDisplayed(String error) {
+        Assertions
+                .assertThat(forgottenPasswordPage.getErrorMessage())
+                .as("Error message")
+                .isEqualToIgnoringCase(error);
     }
 }
