@@ -24,6 +24,6 @@ Feature: Items tests http://inv.bg/objects/manage
     Examples:
       | name_bgn         | name_eng       | price | price_quantity |
       | Кафе             | Coffee         | 10    | 1              |
-#      | Джони Уокър      | Johny Walker   | 25.56 | 1.1            |
-#      | Курс: Тестване 1 | Testing Course | 650   | 20             |
+      | Джони Уокър      | Johny Walker   | 25.56 | 1.1            |
+      | Курс: Тестване 1 | Testing Course | 650   | 20             |
 

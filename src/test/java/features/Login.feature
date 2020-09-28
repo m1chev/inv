@@ -26,5 +26,3 @@ Feature: Login tests http://inv.bg/login
     Then user panel should contain text "karamfilovs@gmail.com"
 
 
-    Scenario: This is just a test
-      Given I delete all items
