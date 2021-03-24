@@ -324,4 +324,19 @@ public class StepDefinitions {
                 .as("Error message")
                 .isEqualToIgnoringCase(error);
     }
+
+    @Given("^user is logged in the system with selected language BG$")
+    public void userIsLoggedInTheSystemWithSelectedLanguageBG() {
+        loginPage = new LoginPage(driver);
+        loginPage.gotoPage();
+        loginPage.enterUsername(Constants.USERNAME);
+        loginPage.enterPassword(Constants.PASSWORD);
+        loginPage.pressLoginButton();
+    }
+
+    @Then("^user should be able to see BG before the valid email in the panel$")
+    public void userShouldBeAbleToSeeBGBeforeTheValidEmailInThePanel() {
+        Assertions
+                .assertThat()
+    }
 }
