@@ -21,7 +21,6 @@ public class ForgottenPasswordPage {
     @FindBy(how = How.ID, using = "email")
     private WebElement emailField;
 
-
     public ForgottenPasswordPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         action = new PageAction(driver);

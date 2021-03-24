@@ -11,6 +11,7 @@ import cucumber.api.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.fest.assertions.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -337,6 +338,31 @@ public class StepDefinitions {
     @Then("^user should be able to see BG before the valid email in the panel$")
     public void userShouldBeAbleToSeeBGBeforeTheValidEmailInThePanel() {
         Assertions
-                .assertThat()
+                .assertThat(driver.findElement(By.cssSelector("#userpanel+a span")).getText())
+                .isEqualToIgnoringCase("BG");
+    }
+
+    @When("^I click on \"([^\"]*)\" button from the navigation bar$")
+    public void iClickOnButtonFromTheNavigationBar(String text){
+        driver.findElement(By.cssSelector("#tabs_objects")).click();
+    }
+
+    @And("^I click on \"([^\"]*)\" button$")
+    public void iClickOnButton(String text){
+        driver.findElement(By.cssSelector("#headline2 a.newbtn")).click();
+    }
+
+    @And("^I enter the text \"([^\"]*)\" in the \"([^\"]*)\" field$")
+    public void iEnterTheTextInTheField(String itemName, String itemPrice){
+        driver.findElement(By.cssSelector("input[name='name']")).sendKeys(itemName);
+        driver.findElement(By.cssSelector("input[name='price']")).sendKeys(itemPrice);
+        driver.findElement(By.cssSelector("input[name='do_submit']")).click();
+    }
+
+    @Then("^I should be able to see a confirmation message \"([^\"]*)\"$")
+    public void iShouldBeAbleToSeeAConfirmationMessage(String messageText){
+        Assertions
+                .assertThat(driver.findElement(By.cssSelector("#okmsg")).getText())
+                .isEqualToIgnoringCase("Артикулът е добавен успешно.\n");
     }
 }
